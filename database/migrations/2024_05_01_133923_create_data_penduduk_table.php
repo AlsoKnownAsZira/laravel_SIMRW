@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('data_kk', function (Blueprint $table) {
-            $table->id('kk_id');
-            $table->string('no_kk', 20)->unique();
-            $table->string('nama_kk', 100);
+        Schema::create('data_penduduk', function (Blueprint $table) {
+            $table->id('penduduk_id');
+            $table->string('NIK', 20)->unique();
+            $table->enum('jenis_kelamin', ['laki-laki', 'perempuan'])->default('laki-laki');
             $table->timestamps();
+
         });
     }
 
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('data_kk');
+        Schema::dropIfExists('data_penduduk');
     }
 };
