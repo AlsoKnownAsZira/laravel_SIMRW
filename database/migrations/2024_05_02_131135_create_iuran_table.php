@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('data_penduduk', function (Blueprint $table) {
-            $table->id('penduduk_id');
-            $table->string('NIK', 20)->unique();
-            $table->enum('jenis_kelamin', ['laki-laki', 'perempuan'])->default('laki-laki');
+        Schema::create('iuran', function (Blueprint $table) {
+            $table->id('id_iuran');
+            $table->string('nominal');
+            $table->date('tanggal_masuk');
             $table->timestamps();
 
+            $table->foreignId('id_RT')->nullable()->constrained('rukun_tetangga', 'id_RT')->onUpdate('cascade')->onDelete('set null');
         });
     }
 
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('data_penduduk');
+        Schema::dropIfExists('iuran');
     }
 };
