@@ -12,10 +12,12 @@ class InventoriSeeder extends Seeder
      */
     public function run(): void
     {
+        $currenttimestamp = now();
         $data=[
-            ['nama_barang'=> 'Speaker', 'jumlah_barang'=>'2'],
-            ['nama_barang'=> 'Microphone', 'jumlah_barang'=>'7'],
-            ['nama_barang'=> 'Kabel olor', 'jumlah_barang'=>'5'],
+            ['nama_barang'=> 'Speaker', 'jumlah_barang'=>'2', 'created_at'=>$currenttimestamp],
+           
+            ['nama_barang'=> 'Microphone', 'jumlah_barang'=>'7', 'created_at'=>$currenttimestamp],
+            ['nama_barang'=> 'Kabel olor', 'jumlah_barang'=>'5', 'created_at'=>$currenttimestamp],
 
         ];
         DB::table('inventori')->insert($data);
